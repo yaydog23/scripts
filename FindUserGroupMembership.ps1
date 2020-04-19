@@ -1,5 +1,5 @@
 ﻿
-$searchbase="OU=Remote Users,DC=corendon-airlines,DC=com"
+$searchbase="OU=ou,DC=dc,DC=com"
 $grouptype="distribution"
 
 $Groups = (Get-ADGroup -Properties * -Filter 'groupcategory -eq $grouptype' -SearchBase $searchbase ).samAccountName

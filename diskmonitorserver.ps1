@@ -1,11 +1,11 @@
 ﻿  #e mail parameters
    
-$From = "monitor@corendonairlines.com"
-$To = "yaydog@corendon-airlines.com","sgokcen@corendon-airlines.com","tkoksal@corendon-airlines.com","kun@corendon-airlines.com"
-$SMTPServer = "mail.corendonairlines.com"   
-$SMTPPort = "587"
-$username = 'monitor'
-$password = 'XXX'
+$From = ""
+$To = ""
+$SMTPServer = ""   
+$SMTPPort = ""
+$username = ''
+$password = ''
 $secpasswd = ConvertTo-SecureString $password -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($username, $secpasswd)
 $Subject = "Monitoring alert from $env:computername"

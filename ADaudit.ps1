@@ -2,38 +2,38 @@
 $today= Get-Date -format "dd-MM-yyyy"
 $When = ((Get-Date).AddDays(-1)).Date
 
-$From = "monitor@corendonairline.com"
-$To = "yaydog@corendon-airlines.com","tkoksal@corendon-airlines.com","sgokcen@corendon-airlines.com"
-$SMTPServer = "mail.corendonairline.com"   
-$SMTPPort = "587"
-$username = 'monitor'
+$From = ""
+$To = ""
+$SMTPServer = ""   
+$SMTPPort = ""
+$username = ''
 $password = 'XXX'
 $secpasswd = ConvertTo-SecureString $password -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($username, $secpasswd)
 
 
-#yeni yaratılan kullanıcılar
+#new created users
 
 Get-ADUser -Filter {whenCreated -ge $When -and Enabled -eq $true}  -Properties * | Select-Object SamAccountName,whenCreated,EmailAddress >> C:\samuser.txt
  
 
-#yeni yaratılan security grupları
+#new created security groups
 
 Get-ADGroup -Filter {whenCreated -ge $When -and GroupCategory -eq "Security" }  -Properties * | Select-Object SamAccountName,whenCreated,mail  >> C:\securitygroups.txt
 
 
-#yeni yaratılan mail dağıtım grupları
+#new created distribution groups
 
 Get-ADGroup -Filter {whenCreated -ge $When -and GroupCategory -eq "Distribution" }  -Properties * | Select-Object SamAccountName,whenCreated,mail  >> C:\distributiongroups.txt
 
 
 
-#sifresini degistiren kullanıcılar
+#users that changed passwords
 
 Get-ADUser -Filter {PasswordLastSet -ge $When -and Enabled -eq $true}  -Properties * | Select-Object SamAccountName,whenChanged,EmailAddress >> C:\userpasswordchange.txt
 
 
-#domain'e alınan bilgisayar
+#new domain join computers
 Get-ADComputer -Filter {whenCreated -ge $When} -Properties DNSHostName,whenCreated | Select-Object DNSHostName,whenCreated >> C:\domainjoincomputers.txt
 
 

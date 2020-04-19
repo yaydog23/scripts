@@ -1,9 +1,9 @@
-﻿$From = "monitor@corendonairlines.com"
-$To = "yaydog@corendon-airlines.com"
-$SMTPServer = "mail.corendonairlines.com"   
-$SMTPPort = "587"
-$username = 'monitor'
-$password = 'XX'
+﻿$From = ""
+$To = ""
+$SMTPServer = ""   
+$SMTPPort = ""
+$username = ''
+$password = ''
 $secpasswd = ConvertTo-SecureString $password -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($username, $secpasswd)
 $Subject = "Monitoring alert from $env:computername"

@@ -1,5 +1,5 @@
-﻿$username = 'admin@corendon365.onmicrosoft.com'
-$password = 'XXX'
+﻿$username = 'o365adminemail'
+$password = 'o365adminemailpasswd'
 $secpasswd = ConvertTo-SecureString $password -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($username, $secpasswd)
 
@@ -8,7 +8,7 @@ $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri ht
 
 Import-PSSession -Session $Session -AllowClobber -DisableNameChecking
 
-New-ComplianceSearch -Name "PhishingMail" -ExchangeLocation all -ContentMatchQuery 'subject:"denemedeneme"'
+New-ComplianceSearch -Name "PhishingMail" -ExchangeLocation all -ContentMatchQuery 'subject:"PHISHINGEMAILSUBJECT"'
 
 
 
